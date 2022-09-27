@@ -14,6 +14,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-secdocv-secdocvTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-secdocv-secdocvTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		09085F798D774638BC7960EF /* bottom-panel.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB0BB99B4F54A7BA4E23E76 /* bottom-panel.png */; };
+		B3044E339881477996D66BED /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 212D2308C9AE43339CFD12BE /* camera.png */; };
+		125DA4C324BC418EB58C1C6C /* camera2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F5FA4B053F34D38A86426F7 /* camera2.png */; };
+		F2273B3B864E47C5B238EA81 /* qr-code.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDCD30FAF334D21B12AE0F6 /* qr-code.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = secdocv/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-secdocv-secdocvTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-secdocv-secdocvTests.release.xcconfig"; path = "Target Support Files/Pods-secdocv-secdocvTests/Pods-secdocv-secdocvTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		BDB0BB99B4F54A7BA4E23E76 /* bottom-panel.png */ = {isa = PBXFileReference; name = "bottom-panel.png"; path = "../assets/images/bottom-panel.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		212D2308C9AE43339CFD12BE /* camera.png */ = {isa = PBXFileReference; name = "camera.png"; path = "../assets/images/camera.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8F5FA4B053F34D38A86426F7 /* camera2.png */ = {isa = PBXFileReference; name = "camera2.png"; path = "../assets/images/camera2.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CBDCD30FAF334D21B12AE0F6 /* qr-code.png */ = {isa = PBXFileReference; name = "qr-code.png"; path = "../assets/images/qr-code.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				0B496B5515294D80BB702792 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +156,18 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		0B496B5515294D80BB702792 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				BDB0BB99B4F54A7BA4E23E76 /* bottom-panel.png */,
+				212D2308C9AE43339CFD12BE /* camera.png */,
+				8F5FA4B053F34D38A86426F7 /* camera2.png */,
+				CBDCD30FAF334D21B12AE0F6 /* qr-code.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +265,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				09085F798D774638BC7960EF /* bottom-panel.png in Resources */,
+				B3044E339881477996D66BED /* camera.png in Resources */,
+				125DA4C324BC418EB58C1C6C /* camera2.png in Resources */,
+				F2273B3B864E47C5B238EA81 /* qr-code.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
