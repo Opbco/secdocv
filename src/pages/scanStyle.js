@@ -1,11 +1,11 @@
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 const deviceWidth = Dimensions.get('screen').width;
 const deviceHeight = Dimensions.get('screen').height;
 const styles = {
   scrollViewStyle: {
     flex: 1,
     justifyContent: 'flex-start',
-    backgroundColor: '#2196f3',
+    backgroundColor: '#2196a3',
   },
   header: {
     display: 'flex',
@@ -43,7 +43,28 @@ const styles = {
     marginTop: '10%',
     backgroundColor: 'white',
   },
-  scanCardView: {
+  verifiedCardView: {
+    width: deviceWidth - 32,
+    height: deviceHeight / 2,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    borderRadius: 10,
+    padding: 25,
+    marginLeft: 5,
+    marginRight: 5,
+    marginTop: 10,
+    backgroundColor: 'white',
+    borderWidth: 4,
+    borderColor: '#118506d9',
+    borderStyle: 'solid',
+  },
+  textVerified: {
+    fontFamily: 'Courgette-Regular',
+    fontWeight: '500',
+    color: '#118506d9',
+  },
+  unverifiedCardView: {
     width: deviceWidth - 32,
     height: deviceHeight / 2,
     alignSelf: 'center',
@@ -51,10 +72,14 @@ const styles = {
     alignItems: 'center',
     borderRadius: 10,
     padding: 25,
+    color: '#b507079f',
     marginLeft: 5,
     marginRight: 5,
     marginTop: 10,
     backgroundColor: 'white',
+    borderWidth: 4,
+    borderColor: '#b507079f',
+    borderStyle: 'solid',
   },
   buttonWrapper: {
     display: 'flex',

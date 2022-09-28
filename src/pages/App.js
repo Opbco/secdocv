@@ -7,6 +7,7 @@ import {
   Image,
   ImageBackground,
   BackHandler,
+  Alert,
 } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import styles from './scanStyle';
@@ -19,30 +20,41 @@ class App extends Component {
       scan: false,
       ScanResult: false,
       result: null,
+      verified: false,
     };
   }
   onSuccess = e => {
-    const check = e.data.substring(0, 4);
-    console.log('scanned data' + check);
+    const scannedData = e.data.split('@');
     this.setState({
-      result: e,
+      result: e.data,
       scan: false,
+      verified: false,
       ScanResult: true,
     });
-    if (check === 'http') {
-      Linking.openURL(e.data).catch(err =>
-        console.error('An error occured', err),
-      );
+    if (scannedData.length !== 2) {
+      Alert.alert("Error", "Wrong code in synthax");
     } else {
-      const [signature, cipherText] = e.data.split('@');
-      // Decrypt
-      let bytes = CryptoJS.AES.decrypt(cipherText, 'mynameisowonop');
-      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-      this.setState({
-        result: decryptedData,
-        scan: false,
-        ScanResult: true,
-      });
+      let cipherText = scannedData[1];
+      try {
+        // Decrypt
+        let bytes = CryptoJS.AES.decrypt(cipherText, "mynameisowonop");
+        let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        console.log(decryptedData)
+        this.setState({
+          result: decryptedData,
+          scan: false,
+          verified: true,
+          ScanResult: true,
+        });
+      } catch (error) {
+        Alert.alert("Error", "unable to decrypt the code. May be wrong code");
+        this.setState({
+          result: null,
+          scan: false,
+          verified: false,
+          ScanResult: true,
+        });
+      }
     }
   };
   activeQR = () => {
@@ -52,28 +64,27 @@ class App extends Component {
     this.setState({ scan: true, ScanResult: false });
   };
   render() {
-    const { scan, ScanResult, result } = this.state;
+    const { scan, ScanResult, result, verified } = this.state;
+    console.log(result);
     return (
       <View style={styles.scrollViewStyle}>
         <Fragment>
           <View style={styles.header}>
             <TouchableOpacity onPress={() => BackHandler.exitApp()}>
-              <Image
-                source={require('./assets/back.png')}
-                style={{ height: 36, width: 36 }}></Image>
+              <Text>back</Text>
             </TouchableOpacity>
             <Text style={styles.textTitle}>Scan QR Code</Text>
           </View>
           {!scan && !ScanResult && (
             <View style={styles.cardView}>
               <Image
-                source={require('./assets/camera.png')}
+                source={require('./../../assets/images/camera.png')}
                 style={{ height: 36, width: 36 }}></Image>
               <Text numberOfLines={8} style={styles.descText}>
                 Please move your camera {'\n'} over the QR Code
               </Text>
               <Image
-                source={require('./assets/qr-code.png')}
+                source={require('./../../assets/images/qr-code.png')}
                 style={{ margin: 20 }}></Image>
               <TouchableOpacity
                 onPress={this.activeQR}
@@ -82,7 +93,7 @@ class App extends Component {
                   <Image
                     source={require('./../../assets/images/camera.png')}
                     style={{ height: 36, width: 36 }}></Image>
-                  <Text style={{ ...styles.buttonTextStyle, color: '#2196f3' }}>
+                  <Text style={{ ...styles.buttonTextStyle, color: '#fff' }}>
                     Scan QR Code
                   </Text>
                 </View>
@@ -92,10 +103,11 @@ class App extends Component {
           {ScanResult && (
             <Fragment>
               <Text style={styles.textTitle1}>Result</Text>
-              <View style={ScanResult ? styles.scanCardView : styles.cardView}>
-                <Text>Type : verified </Text>
-                <Text>Result : {result}</Text>
-                <Text numberOfLines={1}>RawData: {result.rawData}</Text>
+              <View style={verified ? styles.verifiedCardView : styles.unverifiedCardView}>
+                <Text style={styles.textVerified}>Type : {verified ? 'Verified' : 'Bad code'} </Text>
+                {Object.entries(result).map((entry, index) => (
+                  <Text style={styles.textVerified} key={index}>{entry[0]} : {entry[1]}</Text>
+                ))}
                 <TouchableOpacity
                   onPress={this.scanAgain}
                   style={styles.buttonScan}>
